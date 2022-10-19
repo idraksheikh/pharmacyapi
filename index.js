@@ -3,7 +3,7 @@ const request = require('request-promise');
 
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT =8000;
 
 const apiKey = 'c76f87342697c41cc2901443f600d850';
 const baseUrl = `http://api.scraperapi.com?api_key=${apiKey}&autoparse=true`;
@@ -17,7 +17,7 @@ app.get('/',(req, res) => {
 //GET Medicine Details
 app.get('/medicine/:productId', async (req, res) => {
     const { productId } = req.params;
-    const { apiKey } = req.query;
+    
 
     try {
         const response = await request(`${baseUrl}&url=https://www.amazon.in/dp/${productId}`)
@@ -30,7 +30,7 @@ app.get('/medicine/:productId', async (req, res) => {
 //GET Medicine Review
 app.get('/medicine/:productId/review', async (req, res) => {
     const { productId } = req.params;
-    const { apiKey } = req.query;
+    
 
     try {
         const response = await request(`${baseUrl}&url=https://www.amazon.in/product-review/${productId}`)
@@ -43,7 +43,7 @@ app.get('/medicine/:productId/review', async (req, res) => {
 //GET Medicine Offers
 app.get('/medicine/:productId/offers', async (req, res) => {
     const { productId } = req.params;
-    const { apiKey } = req.query;
+    
 
     try {
         const response = await request(`${baseUrl}&url=https://www.amazon.in/gp/offer-listing/${productId}`)
@@ -56,7 +56,7 @@ app.get('/medicine/:productId/offers', async (req, res) => {
 //GET Medicine Search
 app.get('/search/:searchQuery', async (req, res) => {
     const { searchQuery } = req.params;
-    const { apiKey } = req.query;
+    
 
     try {
         const response = await request(`${baseUrl}&url=https://www.amazon.in/s?k=${searchQuery}`)
